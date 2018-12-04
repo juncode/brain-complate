@@ -1,0 +1,39 @@
+#!/usr/bin/env php
+<?php
+
+// 定义项目路径
+define('APP_PATH', __DIR__ . '/app/');
+/* 定义配置文件目录和应用目录同级 */
+define('CONF_PATH', __DIR__ . '/config/');
+
+/*
+ * 定义项目运行环境
+ */
+define('APP_ENV_PRODUCTION', 'production');
+define('APP_ENV', APP_ENV_PRODUCTION);
+define('APP_ENV_IS_PRODUCTION', APP_ENV === APP_ENV_PRODUCTION);
+
+/**
+ * 追加当前运行环境的对应配置项
+ *
+ * @param array  $config     原始配置数组
+ * @param string $configName 配置项名称
+ *
+ * @return array
+ */
+function append_env_config($config, $configName)
+{
+    if (APP_ENV !== APP_ENV_PRODUCTION) {
+        $file = CONF_PATH . 'env' . DS . APP_ENV . '.' . $configName;
+
+        if (is_file($file)) {
+            $append = require $file;
+            $config = array_replace_recursive($config, $append);
+        }
+    }
+
+    return $config;
+}
+
+// 加载框架引导文件
+require './vendor/thinkphp/console.php';

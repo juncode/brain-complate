@@ -1,0 +1,38 @@
+{
+    "name": "brain system",
+    "description": "a brain online read system.",
+    "keywords": [
+        "novel"
+    ],
+    "type": "project",
+    "require": {
+        "php": ">=7.0",
+        "guzzlehttp/guzzle": "~6.2",
+        "hashids/hashids": "^2.0",
+        "overtrue/wechat": "^3.3",
+        "topthink/think-helper": "^1.0",
+        "qiniu/php-sdk": "^7.2",
+        "topthink/think-worker": "^1.0",
+        "workerman/gateway-worker": "^3.0"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "model\\": "model",
+            "think\\": "vendor/thinkphp",
+            "V5\\Library\\Exception\\": "vendor/v5-library/exception",
+            "V5\\Library\\Map\\": "vendor/v5-library/map",
+            "V5\\Library\\Util\\": "vendor/v5-library/util"
+        },
+        "files": [
+            "vendor/v5-library/helper/function.php"
+        ]
+    },
+    "autoload-dev": {
+    },
+    "scripts": {
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
